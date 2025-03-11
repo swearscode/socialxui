@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SocialX - Connect with Friends</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Bubbles -->
+  <script>
+    function createBubbles() {
+      const numBubbles = 20;
+      for (let i = 0; i < numBubbles; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.style.left = `${Math.random() * 100}vw`;
+        bubble.style.animationDuration = `${7 + Math.random() * 5}s`; // 7s–12s duration
+        bubble.style.width = `${8 + Math.random() * 10}px`; // Random size
+        bubble.style.height = bubble.style.width;
+        document.body.appendChild(bubble);
+
+        // Remove bubble after animation ends
+        bubble.addEventListener('animationend', () => bubble.remove());
+      }
+    }
+
+    setInterval(createBubbles, 1500); // New bubble every 1.5s for relaxed pace
+  </script>
+
+  <div class="container">
+    <h1>Welcome to SocialX</h1>
+    <p>Connect with friends and the world around you.</p>
+    
+    <button class="button" onclick="handleSignUp()">Sign Up</button>
+    <button class="button" onclick="handleLogin()">Log In</button>
+    
+    <div class="footer">
+      &copy; 2025 SocialX. All rights reserved.
+    </div>
+  </div>
+
+  <script>
+    function handleSignUp() {
+      window.location.href = '/signup';
+    }
+
+    function handleLogin() {
+      window.location.href = '/login';
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+    }
+  </script>
+</body>
+</html>
